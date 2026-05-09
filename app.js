@@ -28,6 +28,10 @@ const els = {
   systemPrompt: document.querySelector("#systemPrompt"),
 };
 
+const isLocalDevelopment =
+  ["localhost", "127.0.0.1", "0.0.0.0", ""].includes(location.hostname) ||
+  location.protocol === "file:";
+
 function setChip(element, text, tone = "neutral") {
   element.textContent = text;
   element.className = `status-chip ${tone}`;
@@ -174,7 +178,7 @@ async function checkRuntime() {
   if (!state.api) {
     setChip(els.apiStatus, "API: missing", "bad");
     updateAvailabilityUi("unavailable");
-    setDiagnostic("No Prompt API runtime was found on this page.");
+    setDiagnostic(promptApiMissingMessage());
     return;
   }
 
@@ -210,7 +214,7 @@ async function createSession() {
   }
 
   if (!state.api?.create) {
-    throw new Error("Chrome's Prompt API was not found. Check the Chrome flags and reopen this localhost page.");
+    throw new Error(`${promptApiMissingMessage()} Check the Chrome flags and reopen this page.`);
   }
 
   const options = currentOptions();
@@ -456,6 +460,14 @@ function errorMessage(error) {
   }
 
   return error.message || String(error);
+}
+
+function promptApiMissingMessage() {
+  if (isLocalDevelopment) {
+    return "No Prompt API runtime was found. Check Chrome flags and use a supported Chrome desktop build.";
+  }
+
+  return "No Prompt API runtime was found for this hosted origin. Chrome may require Prompt API origin-trial access for published web pages.";
 }
 
 els.form.addEventListener("submit", submitPrompt);

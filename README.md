@@ -1,8 +1,18 @@
 # Nano Prompt Lab
 
-A tiny localhost playground for Chrome's built-in Gemini Nano Prompt API.
+A tiny browser playground for Chrome's built-in Gemini Nano Prompt API.
 
-## Run
+## Public page
+
+Open the hosted version:
+
+https://pportilla.github.io/chrome-nano-test/
+
+The page is static and hosted by GitHub Pages. Inference still happens locally in each visitor's Chrome browser; there is no backend and no API key.
+
+Chrome's Prompt API for normal web pages is still experimental/origin-trial based. If the public page shows `API: missing`, try the local setup below or register the exact `https://pportilla.github.io` origin for Chrome's Prompt API origin trial.
+
+## Run locally
 
 ```bash
 npm start
@@ -30,3 +40,4 @@ Useful diagnostics:
 - Chrome Prompt API: https://developer.chrome.com/docs/ai/prompt-api
 - Chrome built-in AI get started: https://developer.chrome.com/docs/ai/get-started
 - Chrome streaming guidance: https://developer.chrome.com/docs/ai/streaming
+- Chrome origin trials: https://developer.chrome.com/docs/web-platform/origin-trials
