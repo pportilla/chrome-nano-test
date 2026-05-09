@@ -1,0 +1,9 @@
+{
+  "name": "chrome-nano-test",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A localhost playground for Chrome's built-in Gemini Nano Prompt API.",
+  "scripts": {
+    "start": "python3 -m http.server 5173"
+  }
+}

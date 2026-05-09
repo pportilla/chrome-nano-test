@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nano Prompt Lab</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar" aria-label="Application status">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">N</span>
+          <div>
+            <h1>Nano Prompt Lab</h1>
+            <p>Chrome on-device Prompt API</p>
+          </div>
+        </div>
+
+        <div class="status-row">
+          <span class="status-chip neutral" id="apiStatus">API: checking</span>
+          <span class="status-chip neutral" id="modelStatus">Model: unknown</span>
+          <span class="status-chip neutral" id="sessionStatus">Session: idle</span>
+        </div>
+      </header>
+
+      <section class="workspace" aria-label="Prompt workspace">
+        <section class="chat-panel" aria-label="Conversation">
+          <div class="messages" id="messages" aria-live="polite">
+            <div class="empty-state" id="emptyState">
+              <strong>Ready when Chrome is.</strong>
+              <span>Check the model, then send a prompt.</span>
+            </div>
+          </div>
+
+          <form class="composer" id="promptForm">
+            <label class="sr-only" for="promptInput">Prompt</label>
+            <textarea
+              id="promptInput"
+              rows="3"
+              placeholder="Ask Gemini Nano something..."
+              autocomplete="off"
+            ></textarea>
+            <div class="composer-actions">
+              <button class="secondary" type="button" id="stopButton" disabled>Stop</button>
+              <button class="primary" type="submit" id="sendButton">Ask</button>
+            </div>
+          </form>
+        </section>
+
+        <aside class="side-panel" aria-label="Model controls">
+          <section class="control-section">
+            <div class="section-header">
+              <h2>Model</h2>
+              <span id="runtimeLabel">No runtime</span>
+            </div>
+            <div class="meter" aria-label="Model download progress">
+              <div class="meter-bar" id="downloadBar"></div>
+            </div>
+            <p class="diagnostic" id="diagnostic">
+              Waiting for the browser check.
+            </p>
+            <div class="button-row">
+              <button class="secondary" type="button" id="checkButton">Check</button>
+              <button class="primary" type="button" id="prepareButton">Prepare</button>
+            </div>
+          </section>
+
+          <section class="control-section">
+            <h2>Session</h2>
+            <label class="field">
+              <span>Language</span>
+              <select id="languageSelect">
+                <option value="en" selected>English</option>
+                <option value="es">Spanish</option>
+                <option value="ja">Japanese</option>
+                <option value="de">German</option>
+                <option value="fr">French</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>System prompt</span>
+              <textarea id="systemPrompt" rows="4">You are a concise, helpful assistant running locally in Chrome.</textarea>
+            </label>
+            <button class="secondary full-width" type="button" id="resetButton">New session</button>
+          </section>
+
+          <section class="control-section">
+            <h2>Setup</h2>
+            <ul class="setup-list">
+              <li>Use Chrome desktop on a supported machine.</li>
+              <li>Open <code>chrome://flags/#optimization-guide-on-device-model</code> and enable it.</li>
+              <li>Open <code>chrome://flags/#prompt-api-for-gemini-nano-multimodal-input</code> and enable it.</li>
+              <li>If that flag is missing, try <code>chrome://flags/#prompt-api-for-gemini-nano</code>.</li>
+              <li>Restart Chrome, then return to this localhost page.</li>
+            </ul>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
