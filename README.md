@@ -28,7 +28,7 @@ For local testing, Chrome's docs say the built-in AI APIs are available on `loca
 2. `chrome://flags/#prompt-api-for-gemini-nano-multimodal-input`
 3. If the second flag is not present in your Chrome build, try `chrome://flags/#prompt-api-for-gemini-nano`
 
-Restart Chrome after changing flags. The first prompt may trigger the local model download.
+Restart Chrome after changing flags. On first use, click **Prepare** before asking a question. This creates the local session and lets Chrome download Gemini Nano if it is not already installed. Keep the page open until the model finishes downloading, then enter a prompt and click **Ask**.
 
 Useful diagnostics:
 
