@@ -110,6 +110,9 @@ button:disabled {
 }
 
 .site-credit a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   color: var(--primary);
   text-decoration-color: rgba(19, 111, 99, 0.42);
   text-underline-offset: 3px;
@@ -117,6 +120,13 @@ button:disabled {
 
 .site-credit a:hover {
   color: var(--primary-strong);
+}
+
+.github-logo {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  fill: currentColor;
 }
 
 .topbar {
